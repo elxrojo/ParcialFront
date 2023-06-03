@@ -10,8 +10,10 @@ function Form({titulo, onSubmit}){
         e.preventDefault()
         if(!name || name.trim('').length <= 2){
             setError('Ingresar un nombre válido')
+            onSubmit('')
         } else if (!animal || animal.trim('').length <= 6){
             setError('Ingresar un animal válido')
+            onSubmit('')
         } else {
             onSubmit({ name:name, animal:animal })
             setName('')

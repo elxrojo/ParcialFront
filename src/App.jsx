@@ -4,21 +4,26 @@ import Form from './Components/form'
 import Card from './Components/Card'
 
 function App() {
-  const [elemento, setElemento] = useState([])
+  const [elemento, setElemento] = useState({})
+  const [mostrar, setMostrar] = useState(false)
 
 
   const handleData = (valores) => {
-    setElemento(valores)
+    if(valores.name && valores.animal){
+        setElemento(valores)
+        setMostrar(true)
+    }else{
+        setElemento({})
+        setMostrar(false)
+    }
   }
 
   return (
     <>
         <Form titulo={"Cual es tu animal preferido?"} onSubmit={handleData}/>
 
-        {elemento ? <Card elemento={elemento}/> : undefined}
         
-
-
+        {mostrar ? <Card elemento={elemento}/> : undefined}
         
     </>
   )
